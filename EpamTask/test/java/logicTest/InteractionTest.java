@@ -1,18 +1,14 @@
 package logicTest;
 
-import logic.Interaction;
-import entity.ArrayObj;
-import org.testng.annotations.BeforeClass;
+import by.epam.etc.logic.Interaction;
+import by.epam.etc.entity.ArrayObj;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class InteractionTest {
     Interaction interaction = new Interaction();
-    ArrayObj testArray = new ArrayObj();
-    @BeforeClass
-    public void setUp (){
-        testArray.setArr(new int[]{0, -3, 66, -7, 3, 23, 76, -23, -15});
-    }
+    int[] arr = {0, -3, 66, -7, 3, 23, 76, -23, -15};
+    ArrayObj testArray = new ArrayObj(arr);
     @Test()
     public void testMin (){
         int actual = interaction.min(testArray);
@@ -28,7 +24,7 @@ public class InteractionTest {
     @Test()
     public void testReplacement (){
         int[] actual = interaction.replacement(testArray,2,25);
-        int[] expected = {0,-3,25,-7,3,23,76,-23,-15};
+        int[] expected = {0, -3, 25, -7, 3, 23, 76, -23, -15};
         assertEquals(actual,expected);
     }
     @Test()

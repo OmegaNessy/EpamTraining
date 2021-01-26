@@ -1,10 +1,15 @@
-package logic;
+package by.epam.etc.logic;
 
-import entity.ArrayObj;
+import by.epam.etc.entity.ArrayObj;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Interaction {
-    public  int min (ArrayObj arr){
-        int minValue = arr.getArr()[0];
+    static Logger logger = LogManager.getLogger();
+
+    public int min(ArrayObj arr){
+        logger.info("Entered min function");
+        int minValue = arr.getElement(0);
         for (int elem : arr.getArr()){
             if (elem < minValue){
                 minValue = elem;
@@ -14,7 +19,8 @@ public class Interaction {
     }
 
     public  int max (ArrayObj arr){
-        int maxValue = arr.getArr()[0];
+        logger.info("Entered max function");
+        int maxValue = arr.getElement(0);
         for (int elem : arr.getArr()){
             if (elem > maxValue){
                 maxValue = elem;
@@ -24,15 +30,18 @@ public class Interaction {
     }
 
     public  int[] replacement (ArrayObj arr, int position, int number){
-        arr.getArr()[position] = number;
+        logger.info("Entered replacement function");
+        arr.setElement(position,number);
         return arr.getArr();
     }
 
     public  float average (ArrayObj arr){
-        return (float)sum(arr)/arr.getArr().length;
+        logger.info("Entered average function");
+        return (float)sum(arr)/arr.size();
     }
 
     public  int sum (ArrayObj arr){
+        logger.info("Entered sum function");
         int sumValue = 0;
         for (int elem : arr.getArr()){
             sumValue += elem;
@@ -41,6 +50,7 @@ public class Interaction {
     }
 
     public  int positiveCount(ArrayObj arr) {
+        logger.info("Entered positive count function");
         int count = 0;
         for (int elem : arr.getArr()){
             if (elem >= 0){
@@ -51,6 +61,7 @@ public class Interaction {
     }
 
     public  int negativeCount(ArrayObj arr) {
+        logger.info("Entered negative count function");
         int count = 0;
         for (int elem : arr.getArr()){
             if (elem < 0){
