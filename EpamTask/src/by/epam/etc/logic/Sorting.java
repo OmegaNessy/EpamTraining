@@ -1,19 +1,25 @@
 package by.epam.etc.logic;
 
 import by.epam.etc.entity.ArrayObj;
+import by.epam.etc.exception.InvalidDataException;
+import by.epam.etc.validator.DataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.Arrays;
 
 public class Sorting {
     static final String LOGGER_INPUT = "Initial array: {}";
     static final String LOGGER_OUTPUT = "Output array: {}";
+    static final String LOGGER_ERROR = "Object is empty: {}";
     static Logger logger = LogManager.getLogger();
     static final float FACTOR = 1.127f;
 
-    public int[] bubbleSorting(ArrayObj arr) {
+    public void bubbleSorting(ArrayObj arr) throws InvalidDataException {
         logger.info(LOGGER_INPUT, arr);
+        if (DataValidator.isEmpty(arr)){
+            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+            throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
+        }
         int[] mutableArray = arr.getArr();
         int arrLength = arr.size();
         for (int i = 0; i < arrLength - 1; i++) {
@@ -25,16 +31,20 @@ public class Sorting {
                 }
             }
         }
+        arr.setArr(mutableArray);
 
         if (logger.isDebugEnabled()) {
             logger.debug(LOGGER_OUTPUT, Arrays.toString(mutableArray));
         }
-        return mutableArray;
         //QUESTION: Стоит ли возвращать копию поля или работать с ним напрямую копируя ссылку на него
     }
 
-    public int[] shakeSorting(ArrayObj arr) {
+    public void shakeSorting(ArrayObj arr) throws InvalidDataException {
         logger.info(LOGGER_INPUT, arr);
+        if (DataValidator.isEmpty(arr)){
+            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+            throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
+        }
         int[] mutableArray = arr.getArr();
         int leftBoarder = 0;
         int rightBoarder = arr.size();
@@ -56,14 +66,18 @@ public class Sorting {
             }
             leftBoarder++;
         }
+        arr.setArr(mutableArray);
         if (logger.isDebugEnabled()) {
             logger.debug(LOGGER_OUTPUT, Arrays.toString(mutableArray));
         }
-        return mutableArray;
     }
 
-    public int[] combSorting(ArrayObj arr) {
+    public void combSorting(ArrayObj arr) throws InvalidDataException {
         logger.info(LOGGER_INPUT, arr);
+        if (DataValidator.isEmpty(arr)){
+            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+            throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
+        }
         int[] mutableArray = arr.getArr();
         int arrLength = arr.size();
         float gapFactor = arrLength / FACTOR;
@@ -78,9 +92,9 @@ public class Sorting {
             }
             gapFactor /= FACTOR;
         }
+        arr.setArr(mutableArray);
         if (logger.isDebugEnabled()) {
             logger.debug(LOGGER_OUTPUT, Arrays.toString(mutableArray));
         }
-        return mutableArray;
     }
 }

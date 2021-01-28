@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>EpamTask</artifactId>
     <version>1.0</version>
+
     <build>
         <plugins>
             <plugin>
@@ -19,6 +20,7 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
         <groupId>org.testng</groupId>

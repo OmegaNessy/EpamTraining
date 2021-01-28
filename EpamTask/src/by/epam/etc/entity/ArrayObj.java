@@ -36,5 +36,6 @@ public class ArrayObj {
         return string.toString();
     }
 
+    //TODO: добавить override hashcode и тд.
 
 }
