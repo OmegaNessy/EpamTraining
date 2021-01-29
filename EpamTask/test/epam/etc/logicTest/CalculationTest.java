@@ -24,14 +24,14 @@ public class CalculationTest {
 
     Calculation calculation  = new Calculation();
     CalculationWithStream calculationWithStream = new CalculationWithStream();
-    FileReaderUtil fru = new FileReaderUtil();
+    FileReaderUtil fileReaderUtil = new FileReaderUtil();
     Parser parser = new Parser();
     ArrayObj testArray;
 
     @BeforeMethod
     public void beforeMethod() throws IOException {
         try {
-            String initialData = fru.read(FILENAME);
+            String initialData = fileReaderUtil.read(FILENAME);
             int[] parsedData = parser.fromStringToIntArray(initialData);
             testArray = new ArrayObj(Arrays.copyOf(parsedData, parsedData.length));
         }catch (FileException e){

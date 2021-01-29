@@ -1,41 +1,40 @@
 package by.epam.etc.entity;
 
 public class ArrayObj {
-    private int[] arr;
+    private int[] array;
 
-    public ArrayObj (int[] arr){
-        this.arr = arr;
+    public ArrayObj (int[] array){
+        this.array = array;
     }
 
     public int size(){
-        return arr.length;
+        return array.length;
     }
 
     public void setElement (int index, int value){
-        arr[index] = value;
+        array[index] = value;
     }
 
     public int getElement (int index){
-        return arr[index];
+        return array[index];
     }
 
-    public int[] getArr() {
-        return arr;
+    public int[] getArray() {
+        return array;
     }
 
-    public void setArr(int[] arr) {
-        this.arr = arr;
+    public void setArray(int[] array) {
+        this.array = array;
     }
 
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        for (int i: arr) {
+        for (int i: array) {
             string.append(i);
         }
         return string.toString();
     }
 
     //TODO: добавить override hashcode и тд.
-
 }

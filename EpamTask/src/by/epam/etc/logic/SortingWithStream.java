@@ -10,24 +10,20 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class SortingWithStream {
-    static final String LOGGER_INPUT = "Initial array: {}";
-    static final String LOGGER_OUTPUT = "Output array: {}";
-    static final String LOGGER_ERROR = "Object is empty: {}";
     static Logger logger = LogManager.getLogger();
-    static final float FACTOR = 1.127f;
 
-    public void sortingWithStream(ArrayObj arr) throws InvalidDataException {
-        logger.info(LOGGER_INPUT, arr);
-        if (DataValidator.isEmpty(arr)){
-            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+    public void sortingWithStream(ArrayObj array) throws InvalidDataException {
+        logger.info("Initial array: {}", array);
+        if (DataValidator.isEmpty(array)){
+            logger.error("Object is empty: {}",ArrayObj.class.getSimpleName());
             throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
         }
-        int[] mutableArray = arr.getArr();
+        int[] mutableArray = array.getArray();
         int[] result = IntStream.of(mutableArray).sorted().toArray();
-        arr.setArr(result);
+        array.setArray(result);
 
         if (logger.isDebugEnabled()) {
-            logger.debug(LOGGER_OUTPUT, Arrays.toString(mutableArray));
+            logger.debug("Output array: {}", Arrays.toString(mutableArray));
         }
     }
 }

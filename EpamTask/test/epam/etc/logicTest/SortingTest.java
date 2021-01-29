@@ -19,13 +19,13 @@ import java.util.Arrays;
 import static org.testng.Assert.*;
 
 public class SortingTest {
+    static Logger logger = LogManager.getLogger();
     final int[] DEFAULT_ARRAY = {23,43,-1,0,43,54,2,-34,3};
     final String FILENAME = "data/ArrayData.txt";
-    static Logger logger = LogManager.getLogger();
 
     Sorting sorting = new Sorting();
     SortingWithStream streamSorting = new SortingWithStream();
-    FileReaderUtil fru = new FileReaderUtil();
+    FileReaderUtil fileReaderUtil = new FileReaderUtil();
     Parser parser = new Parser();
     int[] sortedArr = {-32, 0, 0, 1, 23, 32, 34, 54, 65};
     ArrayObj testArray = null;
@@ -33,7 +33,7 @@ public class SortingTest {
     @BeforeMethod
     public void beforeMethod() throws IOException {
         try {
-            String initialData = fru.read(FILENAME);
+            String initialData = fileReaderUtil.read(FILENAME);
             int[] parsedData = parser.fromStringToIntArray(initialData);
             testArray = new ArrayObj(Arrays.copyOf(parsedData, parsedData.length));
         }catch (FileException e){
@@ -46,7 +46,7 @@ public class SortingTest {
     public void testBubbleSorting () throws InvalidDataException {
         logger.info("BubbleSorting");
         sorting.bubbleSorting(testArray);
-        int[] actual = testArray.getArr();
+        int[] actual = testArray.getArray();
         int[] expected = sortedArr;
         assertEquals(actual, expected);
 
@@ -56,7 +56,7 @@ public class SortingTest {
     public void testShakeSorting() throws InvalidDataException {
         logger.info("ShakeSorting");
         sorting.shakeSorting(testArray);
-        int[] actual = testArray.getArr();
+        int[] actual = testArray.getArray();
         int[] expected = sortedArr;
         assertEquals(actual, expected);
     }
@@ -65,7 +65,7 @@ public class SortingTest {
     public void testCombSorting() throws InvalidDataException {
         logger.info("CombSorting");
         sorting.combSorting(testArray);
-        int[] actual = testArray.getArr();
+        int[] actual = testArray.getArray();
         int[] expected = sortedArr;
         assertEquals(actual, expected);
     }
@@ -74,7 +74,7 @@ public class SortingTest {
     public void testStreamSort() throws InvalidDataException {
         logger.info("StreamSorting");
         streamSorting.sortingWithStream(testArray);
-        int[] actual = testArray.getArr();
+        int[] actual = testArray.getArray();
         int[] expected = sortedArr;
         assertEquals(actual,expected);
     }

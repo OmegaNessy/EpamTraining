@@ -1,11 +1,8 @@
 package by.epam.etc.util;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 
 public class Parser {
-    static Logger logger = LogManager.getLogger();
     public int[] fromStringToIntArray(String data) {
             String[] dataArray = data.split(" ");
             int size = dataArray.length;

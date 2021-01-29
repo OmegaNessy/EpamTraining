@@ -15,9 +15,9 @@ public class DataValidator {
 
     public static boolean isStringValid(String data) {
         boolean response = true;
-        String[] dataArr = data.split(" ");
+        String[] dataArray = data.split(" ");
         try {
-            for (String element : dataArr) {
+            for (String element : dataArray) {
                 Integer.parseInt(element);
             }
         } catch (NumberFormatException e) {
@@ -28,17 +28,17 @@ public class DataValidator {
     }
     public static boolean isStringValidWithStream(String data) {
         boolean response = true;
-        String[] dataArr = data.split(" ");
+        String[] dataArray = data.split(" ");
         try {
-            logger.info(Arrays.stream(dataArr).mapToInt(Integer::parseInt).toArray());
+            Arrays.stream(dataArray).mapToInt(Integer::parseInt).toArray();
         } catch (NumberFormatException e) {
             logger.info("String is not valid. Input string: \"{}\"", data);
             response = false;
         }
         return response;
     }
-    public static boolean isEmpty(ArrayObj arr){
-        return arr==null||arr.getArr()==null||arr.size()==0;
+    public static boolean isEmpty(ArrayObj array){
+        return array==null||array.getArray()==null||array.size()==0;
     }
 }
 

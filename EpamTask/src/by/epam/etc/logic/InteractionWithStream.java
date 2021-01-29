@@ -8,19 +8,16 @@ import org.apache.logging.log4j.Logger;
 import java.util.stream.IntStream;
 
 public class InteractionWithStream {
-    static final String LOGGER_INPUT = "Initial array: {}";
-    static final String LOGGER_OUTPUT = "Output array: {}";
-    static final String LOGGER_ERROR = "Object is empty: {}";
     static Logger logger = LogManager.getLogger();
 
-    public int min(ArrayObj arr) throws InvalidDataException {
+    public int min(ArrayObj array) throws InvalidDataException {
         logger.info("Entered min function");
-        if(DataValidator.isEmpty(arr)){
-            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+        if(DataValidator.isEmpty(array)){
+            logger.error("Object is empty: {}",ArrayObj.class.getSimpleName());
             throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
         }
-        int minValue = arr.getElement(0);
-        int[] initialArray = arr.getArr();
+        int minValue = array.getElement(0);
+        int[] initialArray = array.getArray();
         IntStream intStream = IntStream.of(initialArray);
         return intStream.reduce(minValue,
                                (x,y)-> {
@@ -32,16 +29,16 @@ public class InteractionWithStream {
         //SolarLint tip
     }
 
-    public  int max (ArrayObj arr) throws InvalidDataException {
+    public  int max (ArrayObj array) throws InvalidDataException {
         logger.info("Entered max function");
 
-        if(DataValidator.isEmpty(arr)){
-            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+        if(DataValidator.isEmpty(array)){
+            logger.error("Object is empty: {}",ArrayObj.class.getSimpleName());
             throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
         }
 
-        int minValue = arr.getElement(0);
-        int[] initialArray = arr.getArr();
+        int minValue = array.getElement(0);
+        int[] initialArray = array.getArray();
         IntStream intStream = IntStream.of(initialArray);
         return intStream.reduce(minValue,
                 (x,y)-> {
@@ -53,36 +50,34 @@ public class InteractionWithStream {
         //SolarLint tip
     }
 
-    public  int[] replacement (ArrayObj arr, int position, int number) throws InvalidDataException {
+    public  int[] replacement (ArrayObj array, int position, int number) throws InvalidDataException {
         logger.info("Entered replacement function");
-        if(DataValidator.isEmpty(arr)){
-            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+        if(DataValidator.isEmpty(array)){
+            logger.error("Object is empty: {}",ArrayObj.class.getSimpleName());
             throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
         }
-        arr.setElement(position,number);
-        return arr.getArr();
+        array.setElement(position,number);
+        return array.getArray();
     }
 
-    public  int positiveCount(ArrayObj arr) throws InvalidDataException {
+    public  int positiveCount(ArrayObj array) throws InvalidDataException {
         logger.info("Entered positive count function");
-        if(DataValidator.isEmpty(arr)){
-            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+        if(DataValidator.isEmpty(array)){
+            logger.error("Object is empty: {}",ArrayObj.class.getSimpleName());
             throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
         }
-        int[] initialArray = arr.getArr();
-        IntStream intStream = IntStream.of(initialArray);
-        return (int) intStream.filter(x->x>=0).count();
+        int[] initialArray = array.getArray();
+        return (int) IntStream.of(initialArray).filter(x->x>=0).count();
     }
 
-    public  int negativeCount(ArrayObj arr) throws InvalidDataException {
+    public  int negativeCount(ArrayObj array) throws InvalidDataException {
         logger.info("Entered negative count function");
 
-        if(DataValidator.isEmpty(arr)){
-            logger.error(LOGGER_ERROR,ArrayObj.class.getSimpleName());
+        if(DataValidator.isEmpty(array)){
+            logger.error("Object is empty: {}",ArrayObj.class.getSimpleName());
             throw new InvalidDataException("Object: "+ ArrayObj.class.getSimpleName() +" cant be empty");
         }
-        int[] initialArray = arr.getArr();
-        IntStream intStream = IntStream.of(initialArray);
-        return (int) intStream.filter(x->x<0).count();
+        int[] initialArray = array.getArray();
+        return (int) IntStream.of(initialArray).filter(x->x<0).count();
     }
 }

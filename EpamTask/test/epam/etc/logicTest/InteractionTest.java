@@ -24,14 +24,14 @@ public class InteractionTest {
 
     Interaction interaction = new Interaction();
     InteractionWithStream interactionWithStream = new InteractionWithStream();
-    FileReaderUtil fru = new FileReaderUtil();
+    FileReaderUtil fileReaderUtil = new FileReaderUtil();
     Parser parser = new Parser();
     ArrayObj testArray;
 
     @BeforeMethod
     public void beforeMethod() throws IOException {
         try {
-            String initialData = fru.read(FILENAME);
+            String initialData = fileReaderUtil.read(FILENAME);
             int[] parsedData = parser.fromStringToIntArray(initialData);
             testArray = new ArrayObj(Arrays.copyOf(parsedData, parsedData.length));
         }catch (FileException e){

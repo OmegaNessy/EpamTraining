@@ -14,25 +14,32 @@ public class FileReaderUtil {
     static Logger logger = LogManager.getLogger();
 
     public String read (String fileName) throws  FileException {
+        if (fileName.isEmpty()){
+            throw new FileException("Filename is Empty");
+        }
         String data = null;
-        Scanner sc;
+        Scanner scanner = null;
         File file = new File(FileReaderUtil.class.getClassLoader().getResource(fileName)
                 .getPath());
         logger.info(file);
         try {
-            sc = new Scanner(file);
-
+            scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                data = scanner.nextLine();
+                logger.info("Reading line {}", data);
+                if (DataValidator.isStringValid(data)) {
+                    break;
+                }
+            }
         }catch (IOException e) {
-            logger.error("File not found");
+            logger.error("File not found: {}", fileName);
             throw new FileException("File not found");
-        }
-        while (sc.hasNextLine()) {
-            data = sc.nextLine();
-            logger.info("Read line {}", data);
-            if (DataValidator.isStringValid(data)) {
-                break;
+        }finally {
+            if (scanner != null) {
+                scanner.close();
             }
         }
+
         return data;
     }
 }
