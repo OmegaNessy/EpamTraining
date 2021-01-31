@@ -1,5 +1,7 @@
 package by.epam.etc.entity;
 
+import java.util.Arrays;
+
 public class ArrayObj {
     private int[] array;
 
@@ -36,5 +38,21 @@ public class ArrayObj {
         return string.toString();
     }
 
-    //TODO: добавить override hashcode и тд.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ArrayObj arrayObj = (ArrayObj) o;
+        return Arrays.equals(array, arrayObj.array);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(array);
+    }
+
 }
