@@ -35,11 +35,7 @@ X
 (test/epam/etc/logicTest/SortingTest.java,9\d\9d6e9ae3c035ddb2f0f01421bff6df337111b080
 T
 $src/by/epam/etc/entity/ArrayObj.java,7\e\7e1e1046a8e8afe665ef69e10eccadbb6a86c565
-Q
-!target/classes/data/ArrayData.txt,6\d\6d6d1528fdbdab5a08bd09502260e79eca42a939
-[
-+target/classes/resources/data/ArrayData.txt,7\d\7d7e4955c73cd08507e3050705e104b046a87c49
-S
-#target/classes/resources/log4j2.xml,b\3\b3a62216600ef340e9d798b5830c07699a2ea82e
-I
-target/classes/log4j2.xml,3\5\3505ec16e66091483fa7354502e2a23a445a0392
+L
+resources/data/ArrayData.txt,9\9\99bee7c4940b90adc0d3ac51f64ee52ec5cd2be4
+D
+resources/log4j2.xml,9\f\9f9d479737c2cd6fce25ed115a1a0dda55a78853
