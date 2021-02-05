@@ -18,7 +18,7 @@ import java.util.Arrays;
 import static org.testng.Assert.*;
 
 public class InteractionTest {
-    final String FILENAME = "data/ArrayData.txt";
+    final String FILENAME = "./resources/data/ArrayData.txt";
     final int[] DEFAULT_ARRAY = {23,43,-1,0,43,54,2,-34,3};
     static Logger logger = LogManager.getLogger();
 

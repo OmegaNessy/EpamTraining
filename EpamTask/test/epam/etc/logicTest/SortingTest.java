@@ -21,7 +21,7 @@ import static org.testng.Assert.*;
 public class SortingTest {
     static Logger logger = LogManager.getLogger();
     final int[] DEFAULT_ARRAY = {23,43,-1,0,43,54,2,-34,3};
-    final String FILENAME = "data/ArrayData.txt";
+    final String FILENAME = "./resources/data/ArrayData.txt";
 
     Sorting sorting = new Sorting();
     SortingWithStream streamSorting = new SortingWithStream();

@@ -19,8 +19,7 @@ public class FileReaderUtil {
         }
         String data = null;
         Scanner scanner = null;
-        File file = new File(FileReaderUtil.class.getClassLoader().getResource(fileName)
-                .getPath());
+        File file = new File(fileName);
         logger.info(file);
         try {
             scanner = new Scanner(file);
