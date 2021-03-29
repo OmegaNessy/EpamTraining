@@ -29,7 +29,7 @@ public class DataValidator {
     }
     public static boolean isStringValidWithStream(String data) {
         boolean response = true;
-        String[] dataArray = data.split(" ");
+        String[] dataArray = data.split(REGEXP);
         try {
             Arrays.stream(dataArray).mapToInt(Integer::parseInt).toArray();
         } catch (NumberFormatException e) {
