@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 public class DataValidator {
     static Logger logger = LogManager.getLogger();
+    final static String REGEXP= " ";
 
     private DataValidator() {
         throw new IllegalStateException("Utility class");
@@ -15,7 +16,7 @@ public class DataValidator {
 
     public static boolean isStringValid(String data) {
         boolean response = true;
-        String[] dataArray = data.split(" ");
+        String[] dataArray = data.split(REGEXP);
         try {
             for (String element : dataArray) {
                 Integer.parseInt(element);
