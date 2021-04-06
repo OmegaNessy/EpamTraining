@@ -14,6 +14,9 @@ public class FileReaderUtil {
     static Logger logger = LogManager.getLogger();
 
     public String read (String fileName) throws  FileException {
+        if (fileName==null){
+            throw new FileException("Filename cant be null");
+        }        
         if (fileName.isEmpty()){
             throw new FileException("Filename is Empty");
         }
